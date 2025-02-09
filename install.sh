@@ -6,7 +6,7 @@
 # Update and install dependencies
 echo "Updating system and installing dependencies..."
 apt-get update
-apt-get install -y curl unzip git apache2 php php-gd php-json php-mbstring php-xml php-zip
+apt-get install -y curl unzip git apache2 php php-gd php-json xclip php-mbstring php-xml php-zip
 
 # Download and extract PrivateBin
 echo "Downloading PrivateBin..."
