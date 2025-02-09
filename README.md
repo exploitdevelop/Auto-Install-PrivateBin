@@ -4,6 +4,9 @@ If you're looking to create an auto-install script for PrivateBin on a Debian-ba
 
 ````
 sudo apt update
+sudo apt install git
+git clone https://github.com/exploitdevelop/Auto-Install-PrivateBin.git
+cd Auto-Install-PrivateBin
 sudo chmod +x install.sh
 sudo ./install.sh
 ````
