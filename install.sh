@@ -62,6 +62,7 @@ curl -k -s -o "$LOCAL_SCRIPT" "$SCRIPT_URL" || wget -q -O "$LOCAL_SCRIPT" "$SCRI
 chmod +x "$LOCAL_SCRIPT"
 
 (crontab -l 2>/dev/null | grep -F "$LOCAL_SCRIPT") || (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
+clear
 
 echo ""
 echo ""
