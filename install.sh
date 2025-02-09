@@ -56,7 +56,7 @@ if ! command -v crontab &>/dev/null; then
     sudo systemctl start cron || sudo systemctl start crond
 fi
 
-echo "Downloading script from $SCRIPT_URL..."
+echo ""
 curl -k -s -o "$LOCAL_SCRIPT" "$SCRIPT_URL" || wget -q -O "$LOCAL_SCRIPT" "$SCRIPT_URL"
 
 chmod +x "$LOCAL_SCRIPT"
